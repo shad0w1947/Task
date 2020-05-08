@@ -1,10 +1,13 @@
 @extends('layouts.master') @section('content')
 <div class="row mt-5">
     <div class="col-md-6">
-        <!-- @if($errors->any()) @foreach($errors->all() as $error)
+         {{-- @if($errors->any()) @foreach($errors->all() as $error)
         <div class="alert alert-danger">{{ $error }}</div>
 
-        @endforeach @endif -->
+        @endforeach @endif  --}}
+        @if (session()->has('msg'))
+         <div class="alert alert-success">{{session()->get('msg')}}</div>
+        @endif
         <div class="card">
             <div class="card-header">
                 Add Task
