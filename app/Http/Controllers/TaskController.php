@@ -9,7 +9,8 @@ class TaskController extends Controller
 {
     //
     function index(){
-        return view('task.index');
+        $task = Task::all();
+        return view('task.index',compact('task'));
     }
     function store(Request $request){
         $request->validate([

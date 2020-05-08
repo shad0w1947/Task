@@ -47,20 +47,15 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>Task</th>
-                        <th>Action</th>
+                        <th style="width:2em">Action</th>
                     </tr>
+                    {{-- {{dd($task)}}; --}}
+                    @foreach($task as $task)
                     <tr>
-                        <td>Task</td>
+                        <td>{{$task->title}}</td>
                         <td><button class="btn btn-danger">Delete</button></td>
                     </tr>
-                    <tr>
-                        <td>Task</td>
-                        <td><button class="btn btn-danger">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Task</td>
-                        <td><button class="btn btn-danger">Delete</button></td>
-                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
