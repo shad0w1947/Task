@@ -1,12 +1,12 @@
 @extends('layouts.master') @section('content')
 <div class="row mt-5">
     <div class="col-md-6">
-         {{-- @if($errors->any()) @foreach($errors->all() as $error)
+        {{-- @if($errors->any()) @foreach($errors->all() as $error)
         <div class="alert alert-danger">{{ $error }}</div>
 
-        @endforeach @endif  --}}
+        @endforeach @endif --}} 
         @if (session()->has('msg'))
-         <div class="alert alert-success">{{session()->get('msg')}}</div>
+        <div class="alert alert-success">{{session()->get('msg')}}</div>
         @endif
         <div class="card">
             <div class="card-header">
@@ -25,7 +25,10 @@
                             class="form-control {{ $errors->has('task') ? 'is-invalid':'' }}"
                         />
                         <div class="invalid-feedback">
-                            "{{ $errors->has('task') ? $errors->first('task'):'' }}"
+                            "{{ $errors->has('task') ? $errors->first('task'):''
+
+
+                            }}"
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,13 +50,22 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>Task</th>
-                        <th style="width:2em">Action</th>
+                        <th style="width: 2em;">Action</th>
                     </tr>
-                    {{-- {{dd($task)}}; --}}
-                    @foreach($task as $task)
+                    {{-- {{dd($task)
+
+
+                    }}; --}} @foreach($task as $task)
                     <tr>
                         <td>{{$task->title}}</td>
-                        <td><button class="btn btn-danger">Delete</button></td>
+
+                        <td>
+                            <form action="{{ route('task.destroy',$task->id)}}"  method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </table>
